@@ -1,0 +1,44 @@
+<mat-toolbar>
+  <span>VD(M)A Leitsystem Dummy</span>
+  <span class="example-spacer"></span>
+  <mat-divider [vertical]="true"></mat-divider>
+  <button mat-flat-button (click)="toggleRouteForm()" [color]="routeFormVisible ? 'primary' : 'basic'">Routen</button>
+  <button mat-icon-button (click)="addRoute()"><mat-icon>add</mat-icon></button>
+  <mat-divider [vertical]="true"></mat-divider>
+  <span class="example-spacer"></span>
+  <button mat-flat-button (click)="toggleFtfList()" [color]="ftfListVisible ? 'primary' : 'basic'">Fahrzeuge</button>
+  <button mat-icon-button (click)="addFTF()"><mat-icon>add</mat-icon></button>
+  <span class="example-spacer"></span>
+  <button mat-button (click)="toggleMQTT()">MQTT<mat-icon class="example-icon">{{mqttConnected ? 'wifi' : 'wifi_off'}}</mat-icon></button>
+  <button mat-button (click)="toggleSettings()">
+    <mat-icon class="example-icon">settings</mat-icon>
+  </button>
+</mat-toolbar>
+<svg id="stage" width="701" height="489" style="background-image: url('../../assets/map.png')">
+  <defs>
+    <g id="arrow">
+      <line x1="0" y1="0" x2="50" y2="0" stroke-width="6px" stroke-linecap="round"></line>
+      <line x1="50" y1="0" x2="40" y2="10"  stroke-width="6px" stroke-linecap="round"></line>
+      <line x1="50" y1="0" x2="40" y2="-10"  stroke-width="6px" stroke-linecap="round"></line>
+    </g>
+    <g id="coordSys" transform="scale(0.3)">
+      <use xlink:href="#arrow" class="xArrow" stroke="#d21f3c"></use>
+      <use xlink:href="#arrow" class="yArrow" style="transform: rotate(-90deg)" stroke="#00a86b"></use>
+      <circle cx="0" cy="0" r="10" stroke-width="5" fill="none" stroke="#0000FF"></circle>
+      <circle cx="0" cy="0" r="2" stroke-width="5" fill="#0000FF" stroke="#0000FF"></circle>
+      <text x="50" y="-10" font-family="sans-serif" font-weight="bolder" fill="#d21f3c">X</text>
+      <text x="5" y="-50" font-family="sans-serif" font-weight="bolder" fill="#00a86b">Y</text>
+      <text x="-20" y="20" font-family="sans-serif" font-weight="bolder" fill="#0000FF">Z</text>
+    </g>
+  </defs>
+</svg>
+<br>
+<div *ngIf="selectedNode != null" id="nodeEditor">
+<app-node-form [node]="selectedNode" ></app-node-form>
+</div>
+<div *ngIf="routeFormVisible" id="routeFormContainer">
+<app-route-form [routes]="routes" [mqtt]="mqtt" [ftfs]="ftfs"></app-route-form>
+</div>
+<div  *ngIf="ftfListVisible" id="ftfListContainer">
+  <app-ftf-list [ftfs]="ftfs"></app-ftf-list>
+</div>

@@ -1,0 +1,68 @@
+<div mat-dialog-title>{{edge.edgeID}} - {{edge.edgeDescription}}</div>
+<div mat-dialog-content>
+  <div class="formContainer">
+    <mat-form-field>
+      <input matInput placeholder="Edge-ID" [(ngModel)]="edge.edgeID">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Edge Description" [(ngModel)]="edge.edgeDescription">
+    </mat-form-field>
+    
+    <mat-checkbox [(ngModel)]="edge.released" [disabled]="true">Released</mat-checkbox>
+    <mat-checkbox [(ngModel)]="edge.replaceBase">Replace Base</mat-checkbox>
+
+    <p>Start Node: {{edge.startNode}}</p>
+    <p>End Node: {{edge.endNode}}</p>
+
+    <mat-form-field>
+      <input matInput type="number" placeholder="Maximum speed [m/s]" [(ngModel)]="edge.maxSpeed">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput type="number" placeholder="Maximum height [m]" [(ngModel)]="edge.maxHeight">
+    </mat-form-field>
+    
+    <mat-form-field>
+      <input matInput type="number" placeholder="Maximum speed [m/s]" [(ngModel)]="edge.maxSpeed">
+    </mat-form-field>
+    
+    <mat-form-field>
+      <input matInput type="number" placeholder="Desired orientation" [(ngModel)]="edge.orientation">
+    </mat-form-field>
+    
+    <mat-form-field>
+      <input matInput type="number" placeholder="Direction" [(ngModel)]="edge.direction">
+    </mat-form-field>
+    
+    <mat-checkbox [(ngModel)]="edge.rotationAllowed">Rotation allowed</mat-checkbox>
+
+    <mat-form-field>
+      <input matInput type="number" placeholder="Maximum rotation speed [rad/s]" [(ngModel)]="edge.maxRotationSpeed">
+    </mat-form-field>
+    
+    <mat-form-field>
+      <input matInput type="text" placeholder="Trajectory JSON" [(ngModel)]="edge.trajectory">
+    </mat-form-field>
+    
+    <mat-form-field>
+      <input matInput type="text" placeholder="Distance [m]" [(ngModel)]="edge.distance">    
+    </mat-form-field>
+
+    <h4 mat-subheader>Aktionen</h4>
+    <mat-list>
+      <mat-list-item *ngFor="let item of edge.actions">
+        {{item.actionID}} - {{item.actionDescription}}
+        <button  mat-icon-button (click)="editAction(item)"><mat-icon class="material-icons md-18">edit</mat-icon></button>
+        <button  mat-icon-button (click)="deleteAction(item)"><mat-icon class="material-icons md-18">delete</mat-icon></button>
+        </mat-list-item>
+    </mat-list>
+    <button mat-icon-button (click)="addNewAction()"> <mat-icon>add</mat-icon></button>
+        
+  </div>
+</div>
+
+<mat-dialog-actions>
+  <button mat-raised-button (click)="cancel()">Abbrechen</button>
+  <button mat-raised-button (click)="save()">Speichern</button>
+</mat-dialog-actions>

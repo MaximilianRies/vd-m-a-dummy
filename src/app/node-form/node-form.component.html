@@ -1,0 +1,47 @@
+<div class="container">
+  <mat-card>
+
+      <mat-form-field>
+          <input matInput placeholder="nodeID" [(ngModel)]="node.nodeID" value="{{node.nodeID}}">
+        </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="nodeDescription" [(ngModel)]="node.nodeDescription" value="{{node.nodeDescription}}">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput type="number" placeholder="X Koordinate in Meter" [(ngModel)]="node.position.x" value="{{node.position.x}}">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput type="number" placeholder="Y Koordinate in Meter" [(ngModel)]="node.position.y" value="{{node.position.y}}">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput type="number" placeholder="Theta im Bogenmaß" [(ngModel)]="node.position.theta" value="{{node.position.theta}}">
+    </mat-form-field>
+    <div [style.transform]="rotateArrow(node.position.theta)"><mat-icon>arrow_right_alt</mat-icon></div>
+    
+      <mat-checkbox [(ngModel)]="node.released">Released</mat-checkbox>
+      <mat-checkbox [(ngModel)]="node.replaceBase">Replace Base</mat-checkbox>
+      <mat-checkbox [(ngModel)]="node.isExact">isExact</mat-checkbox>
+      
+    <div id="startOrEnd">
+          <mat-checkbox [(ngModel)]="node.start" >Start</mat-checkbox>
+          <mat-checkbox [(ngModel)]="node.end">Ende</mat-checkbox>
+    </div>
+
+    <h4 mat-subheader>Aktionen</h4>
+    <mat-list>
+      <mat-list-item *ngFor="let item of node.actions">
+        {{item.actionID}} - {{item.actionDescription}}
+        <button  mat-icon-button (click)="editAction(item)"><mat-icon class="material-icons md-18">edit</mat-icon></button>
+        <button  mat-icon-button (click)="deleteAction(item)"><mat-icon class="material-icons md-18">delete</mat-icon></button>
+        </mat-list-item>
+    </mat-list>
+    <button mat-icon-button (click)="addNewAction()"> <mat-icon>add</mat-icon></button>
+
+    <p>Route: {{node.routeID}}</p>
+
+  </mat-card>
+</div>

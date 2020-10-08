@@ -1,0 +1,15 @@
+<mat-card>
+  <mat-card-title>FTF Liste</mat-card-title>
+  <mat-card-content>
+    <mat-accordion multi="true">
+      <mat-expansion-panel *ngFor="let ftf of this.ftfs">
+        <mat-expansion-panel-header>{{ftf.name}}</mat-expansion-panel-header>
+        <div style="text-align: left">
+        <h4>Basistopic:</h4>
+        <p>{{ftf.getBaseTopic()}}</p>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card-content>
+  <button mat-button (click)="saveFTFList()">Fahrzeuge speichern</button>
+</mat-card>

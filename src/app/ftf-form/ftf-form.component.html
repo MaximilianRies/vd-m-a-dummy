@@ -1,0 +1,39 @@
+<div mat-dialog-container>
+
+  <div mat-dialog-content>
+    <p *ngIf="ftf.x">Position: ({{ftf.x}}, {{ftf.y}}, {{ftf.theta}}</p>
+    <form #ftfForm="ngForm">
+    <mat-form-field>
+      <input matInput placeholder="Hersteller" [(ngModel)]="ftf.manufacturer" name="manufacturer" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Flotte" [(ngModel)]="ftf.fleet" name="fleet" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Name" [(ngModel)]="ftf.name" name="name" required>
+    </mat-form-field>
+
+
+  </form>
+  <h3 matSubheader *ngIf="ftf.lastMessages.length > 0">
+    Letzte {{ftf.lastMessages.length}} Nachrichten von diesem FTF
+    <button mat-icon-button (click)="this.ftf.purgeMessages()" style="float: right;">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </h3>
+    <div style="clear: both"></div>
+    <mat-accordion multi="true">
+      <mat-expansion-panel *ngFor="let message of ftf.lastMessages">
+        <mat-expansion-panel-header>{{message.destinationName}}</mat-expansion-panel-header>
+        <textarea matTextareaAutosize placeholder="Nachricht" value="{{this.styleJSON(message.payloadString)}}" style="width: 100%;"></textarea>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="this.dialogRef.close()">Abbrechen</button>
+    <button mat-button (click)="this.dialogRef.close(this.ftf)" [disabled]="ftfForm.invalid">Speichern</button>
+  </div>
+
+</div>

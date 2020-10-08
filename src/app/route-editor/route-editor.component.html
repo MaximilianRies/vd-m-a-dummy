@@ -1,0 +1,20 @@
+<div mat-dialog-title>{{dialogData.route.name}} bearbeiten</div>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput placeholder="Routenname" value="{{dialogData.route.name}}" [(ngModel)]="dialogData.route.name">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Zugeordnetes Fahrzeug:</mat-label>
+    <mat-select [(value)]="dialogData.route.assignedFtfBaseTopic">
+      <mat-option value="">Keines</mat-option>
+      <mat-option *ngFor="let ftf of dialogData.ftfs" value="{{ftf.getBaseTopic()}}">
+        {{ftf.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<mat-dialog-actions>
+  <button mat-button (click)="cancel()">Abbrechen</button>
+  <button mat-button (click)="save()">Speichern</button>
+</mat-dialog-actions>

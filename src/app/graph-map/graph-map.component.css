@@ -1,0 +1,82 @@
+@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
+
+:host ::ng-deep path {
+  stroke-width: 5px;
+  stroke: black;
+}
+
+:host ::ng-deep path:hover {
+  stroke-width: 5px;
+  stroke: red;  
+  filter: drop-shadow(10 10 7px rgba(0,0,0,0.5));  
+}
+
+:host ::ng-deep .idText  {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+:host ::ng-deep #nodeEditor {
+  z-index: 10;
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  left: 50px;
+  top: 100px;
+}
+
+:host ::ng-deep #dragline {
+  z-index: 20;
+  visibility: hidden;
+}
+
+#mapSettings {
+  position: absolute;
+  right: 10px;
+  top: 25px;
+  display: inline-grid;
+  grid: auto auto;
+  z-index: 20;
+  background-color: #FFFFFF;
+}
+
+#settingsButton {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 10;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+svg {
+  background-size: 100% auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+#routeFormContainer {
+  position: absolute;
+  right: 0px;
+  top: 64px;
+  padding: 30px 30px 30px 30px;
+}
+
+#ftfListContainer {
+  position: absolute;
+  right: 0px;
+  top: 64px;
+  width: 30%;
+  padding: 30px 30px 30px 30px;
+}

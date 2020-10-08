@@ -1,0 +1,17 @@
+<div mat-dialog-title>Auftrag mit Route "{{orderInterface.route.name}}" erstellen</div>
+<div mat-dialog-content>
+  <div id="formContainer">
+  <mat-form-field>
+    <input matInput placeholder="Topic" value="{{orderInterface.route.assignedFtfBaseTopic + '/order'}}" #topic>
+  </mat-form-field>
+
+  <mat-form-field>
+    <!--<input matInput  id="orderJSON" #orderJSON value="{{orderJson}}">-->
+    <textarea matInput placeholder="JSON" #orderJSON id="orderJSON" rows="30" value="{{orderJson}}"></textarea>
+  </mat-form-field>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="cancel()">Abbrechen</button>
+  <button mat-button (click)="sendOrder(topic.value, orderJSON.value)">Senden</button>
+</div>

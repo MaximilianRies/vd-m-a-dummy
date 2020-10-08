@@ -1,0 +1,14 @@
+.container {
+  width: 300px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+#startOrEnd {
+  display:grid;
+  grid-template-columns: auto auto;
+}
+
+

@@ -1,0 +1,21 @@
+<mat-card id="routeCard">
+  <mat-card-title>Routen</mat-card-title>
+  <mat-card-content>
+
+    <mat-card *ngFor="let route of routes">
+      <mat-card-content>
+        <h3 matSubheader>
+            <mat-icon matListIcon [ngStyle]="{'color':route.color}">lens</mat-icon>
+            {{route.routeID}} - {{route.name}}
+          <button mat-icon-button class="sendButton" (click)="createOrder(route)">
+            <mat-icon>send</mat-icon>
+          </button>
+          <button mat-icon-button class="sendButton" (click)="editRoute(route)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </h3>
+        <p *ngIf="route.assignedFtfBaseTopic" style="text-align: left">Zugeordnetes Fahrzeug: {{route.assignedFtfBaseTopic}}</p>
+      </mat-card-content>
+    </mat-card>
+  </mat-card-content>
+</mat-card>

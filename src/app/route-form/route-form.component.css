@@ -1,0 +1,16 @@
+#routeCard {
+  position: center;
+  margin: 0 auto;
+  max-width: 600px;
+  max-height: 400px;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.sendButton {
+  float: right;
+}
+
+.routeText {
+  float:left;
+}

@@ -1,0 +1,8 @@
+#formContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+#formContainer > * {
+  width: 100%;
+}

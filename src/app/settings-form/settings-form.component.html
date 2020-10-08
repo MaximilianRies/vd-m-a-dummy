@@ -1,0 +1,38 @@
+<div mat-dialog-title>Einstellungen</div>
+<div mat-dialog-content>
+  <h4>Karte</h4>
+  <div id="formContainer">
+  <button mat-stroked-button (click)="mapInput.click()">Karte ändern</button>
+  <input id="mapPicker" style="display: none" type="file" #mapInput (change)="changeMap()" accept="image/png">
+    <mat-form-field>
+  <input matInput placeholder="Auflösung in Meter pro Pixel" type="number" id="mapMetersPerPixel"
+         [(ngModel)]="data.mapMetersPerPixel" (change)="setMapChangedFlag()"/>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="x-Offset von Kartenmitte" type="number" id="mapXoffset" [(ngModel)]="data.mapXoffset" (change)="setMapChangedFlag()" />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="y-Offset von Kartenmitte" type="number" id="mapYoffset" [(ngModel)]="data.mapYoffset" (change)="setMapChangedFlag()" />
+    </mat-form-field>
+    <h4>MQTT</h4>
+    <mat-form-field>
+      <input matInput placeholder="MQTT Hostadresse" type="text" id="mqttHostAdress" [(ngModel)]="data.mqttHost"
+             (change)="setMQTTChangedFlag()">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="MQTT Port" type="text" id="mqttPort" [(ngModel)]="data.mqttPort"
+             (change)="setMQTTChangedFlag()">
+    </mat-form-field> 
+    <mat-form-field>
+      <input matInput placeholder="MQTT ClientID" type="text" id="mqttClientID" [(ngModel)]="data.mqttClientID"
+             (change)="setMQTTChangedFlag()">
+    </mat-form-field>
+  </div>
+
+</div>
+  <mat-dialog-actions>
+    <button mat-raised-button (click)="cancel()">Abbrechen</button>
+    <button mat-raised-button (click)="save()">Speichern</button>
+  </mat-dialog-actions>
+
+
